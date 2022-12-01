@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- By Sam Herbert (@sherb), for everyone. More @ http://goo.gl/7AJzbL -->
+
+<svg
+   width="19"
+   height="20"
+   viewBox="0 0 19 20"
+   version="1.1"
+   id="svg18"
+   sodipodi:docname="0c167c8aee6cd867b111a89844f9c71a.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview20"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0" />
+  <defs
+     id="defs9">
+    <linearGradient
+       x1="19.52798"
+       y1="-1"
+       x2="30.47958"
+       y2="3.5343499"
+       id="a"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         stop-color="#093A3E"
+         stop-opacity="0"
+         offset="0%"
+         id="stop2" />
+      <stop
+         stop-color="#093A3E"
+         stop-opacity=".631"
+         offset="63.146%"
+         id="stop4" />
+      <stop
+         stop-color="#093A3E"
+         offset="100%"
+         id="stop6" />
+    </linearGradient>
+  </defs>
+  <g
+     fill="none"
+     fill-rule="evenodd"
+     id="g16"
+     transform="translate(-19)">
+    <g
+       transform="translate(1,1)"
+       id="g14">
+      <path
+         d="M 36,18 C 36,8.06 27.94,0 18,0"
+         id="Oval-2"
+         stroke="url(#a)"
+         stroke-width="2"
+         style="stroke:url(#a)">
+        <animateTransform
+           attributeName="transform"
+           type="rotate"
+           from="0 18 18"
+           to="360 18 18"
+           dur="0.9s"
+           repeatCount="indefinite" />
+      </path>
+      <circle
+         fill="#093a3e"
+         cx="36"
+         cy="18"
+         r="1"
+         id="circle12">
+        <animateTransform
+           attributeName="transform"
+           type="rotate"
+           from="0 18 18"
+           to="360 18 18"
+           dur="0.9s"
+           repeatCount="indefinite" />
+      </circle>
+    </g>
+  </g>
+</svg>
