@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 
 export const getStaticProps = async () => {
     const request = await fetch(
-        `http://localhost:2000/api/users`
+        `http://localhost:3000/api/getWebrazzi`
     );
     const posts = await request.json();
     return {
@@ -33,17 +33,17 @@ const Home = ({ posts }) => {
                     <div className="relative mx-auto max-w-7xl">
 
                         
-                        <div className="grid gap-5 mt-0 mt-12 transform w-lg mx-18 -translate-y-44 lg:grid-cols-3 lg:max-w-none">
-                            {posts.data.map((post) => (
+                        <div className="grid gap-5 mt-0 mt-12 transform -translate-y-12 w-lg mx-18 lg:grid-cols-3 lg:max-w-none">
+                            {posts.result.map((post) => (
                                 <div
-                                    key={post.username}
+                                    key={post.title}
                                     className="flex flex-col items-center overflow-hidden bg-gray-400 rounded-lg shadow-lg bg-opacity-10"
                                 >
-                                    <a href={"/videos/" + post.id}>
+                                    <a href={post.url}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
-                                            <div className="flex flex-col items-stretch min-h-full pb-4 mb-6 transition-all duration-150 bg-transparent bg-gray-200 rounded-lg shadow-lg bg-opacity-10 hover:shadow-2xl">
+                                            <div className="flex flex-col min-h-full pb-4 mb-6 transition-all duration-150 bg-transparent bg-gray-200 rounded-lg shadow-lg bg-opacity-10 hover:shadow-2xl">
                                                 <div className="md:flex-shrink-0">
                                                     
                                                 </div>
@@ -60,13 +60,13 @@ const Home = ({ posts }) => {
                                                 <div className="flex flex-wrap items-center flex-1 px-4 py-1 mx-auto text-center">
                                                     <div href="#" className="hover:underline">
                                                         <h2 className="text-2xl font-bold tracking-normal text-orange-700">
-                                                            {post.username}
+                                                            {post.title}
                                                         </h2>
                                                     </div>
                                                 </div>
                                                 <div className="border-white-300" />
                                                 <div className="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700">
-                                                    {post.password}
+                                                    {post.title}
                                                 </div>
                                                 <div className="border-gray-300" />
                                                 <div className="px-4 py-2 mt-2">
