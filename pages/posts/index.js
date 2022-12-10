@@ -4,9 +4,9 @@ import { useState, useEffect } from "react";
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const request = await fetch(
-        `http://localhost:3000/api/getWebrazzi`
+        `http://localhost:3000/api/shiftdelete`
     );
     const posts = await request.json();
     return {
@@ -17,23 +17,24 @@ export const getStaticProps = async () => {
 }
 const Home = ({ posts }) => {
     const [render, setRender] = useState(false);
+    const yazar =["Webrazzi","Shiftdelete"]
 
     useEffect(() => {
         setRender(true);
     }, []);
 
     return (
-        <><div className="px-4 mx-auto bg-gray-800 bg-opacity-25 max-w-7xl sm:px-6 lg:px-8 ">
+        <><div className="px-4 mx-auto bg-gray-400 bg-opacity-25 max-w-7xl sm:px-6 lg:px-8 ">
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
             <div className="">{
-                <div className="relative px-4 pt-16 pb-20 bg-gray-800 bg-opacity-25 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
+                <div className="relative px-4 pt-16 pb-20 bg-gray-600 bg-opacity-25 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
                     <div className="absolute inset-0">
-                        <div className="bg-transparent h-1/3 sm:h-2/3" />
+                        <div className="bg-white bg-opacity-50 h-1/3 sm:h-2/3" />
                     </div>
                     <div className="relative mx-auto max-w-7xl">
 
                         
-                        <div className="grid gap-5 mt-0 mt-12 transform -translate-y-12 w-lg mx-18 lg:grid-cols-3 lg:max-w-none">
+                        <div className="grid gap-5 mt-0 mt-12 transform -translate-y-12 bg-white bg-opacity-20 w-lg mx-18 lg:grid-cols-3 lg:max-w-none">
                             {posts.result.map((post) => (
                                 <div
                                     key={post.title}
@@ -43,13 +44,19 @@ const Home = ({ posts }) => {
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
-                                            <div className="flex flex-col min-h-full pb-4 mb-6 transition-all duration-150 bg-transparent bg-gray-200 rounded-lg shadow-lg bg-opacity-10 hover:shadow-2xl">
+                                            <div className="flex flex-col min-h-full pb-4 mb-6 transition-all duration-150 bg-transparent bg-gray-100 rounded-lg shadow-lg bg-opacity-10 hover:shadow-2xl">
                                                 <div className="md:flex-shrink-0">
-                                                    
-                                                </div>
+                                                    <img
+                                                        src={post.image}
+                                                        alt="Blog Cover"
+                                                        className="object-fill w-full rounded-lg rounded-b-none md:h-56"
+                                                    />
+
                                                 <div className="flex items-center justify-between px-4 py-2 overflow-hidden">
                                                     <div className="flex flex-row items-center">
-                                                        <div className="flex flex-row items-center mr-2 text-xs font-medium text-gray-500"></div>
+                                                        <div className="flex flex-row items-center mr-2 text-xs font-medium text-gray-500">
+                                                            {post.category}
+                                                        </div>
 
                                                         <div className="flex flex-row items-center mr-2 text-xs font-medium text-gray-500"></div>
 
@@ -77,7 +84,7 @@ const Home = ({ posts }) => {
                                                                     href=""
                                                                     className="font-semibold text-gray-700 hover:underline"
                                                                 >
-                                                                   yazar
+                                                                   {yazar[1]}
                                                                 </div>
                                                                 <div className="text-xs text-gray-600">
                                                                    date
@@ -85,6 +92,8 @@ const Home = ({ posts }) => {
                                                             </div>
                                                         </div>
                                                     </div>
+                                                </div>
+                                            
                                                 </div>
                                             </div>
                                         </div>

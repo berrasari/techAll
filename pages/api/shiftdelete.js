@@ -30,7 +30,7 @@ const getOptions = async () => {
 const getWebrazzi = async (req, res) => {
     const titleSelector = ".post-title"
     const urlSelector = ".post-title a"
-    const imageSelector = ".post-photo img"
+    const imageSelector = ".post-gallery img"
     const categorySelector = ".post-category"
     const yazar = "webrazzi"
     const properties = req.body.properties
@@ -48,7 +48,7 @@ const getWebrazzi = async (req, res) => {
             }
         })
 
-        await page.goto("https://webrazzi.com/haberler/", { timeout: 0 }).then(async (response) => { })
+        await page.goto("https://shiftdelete.net/teknoloji-haberleri", { timeout: 0 }).then(async (response) => { })
         const html = await page.evaluate(() => {
             return document.querySelector("body").innerHTML
         })
@@ -66,7 +66,7 @@ const getWebrazzi = async (req, res) => {
         })
         $(urlSelector).each((i, elem) => {
             let href = $(elem).attr("href")
-            if (href.charAt(0) === "/") href = "https://webrazzi.com/haberler/" + href
+            if (href.charAt(0) === "/") href = "https://shiftdelete.net/teknoloji-haberleri" + href
             result[i].url = href
         })
         $(imageSelector).each((i, elem) => {
