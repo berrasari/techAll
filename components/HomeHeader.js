@@ -12,9 +12,9 @@ export default function HomeHeader() {
             Inspire, explore and read the best contents.
             </p>
             <div
-              className="inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900 border-2 border-orange-700 rounded-md shadow-lg hover:border-gray-700 hover:text-gray-300"
+              className="inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900 border-2 border-orange-700 rounded-md shadow-lg hover:border-gray-700 hover:text-orange-700"
             ><a
-              href="/"
+              href="/posts"
             >
                 Blog
               </a></div>

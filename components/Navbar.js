@@ -8,7 +8,7 @@ import { ChevronDownIcon } from '@heroicons/react/solid'
 
 export default function Navbar() {
   return (
-    <Disclosure as="nav" className="bg-transparent bg-cover  shadow-md bg-[url('https://c4.wallpaperflare.com/wallpaper/718/756/55/gray-dark-gradation-blur-wallpaper-preview.jpg')]">
+    <Disclosure as="nav" className="bg-transparent bg-cover  shadow-lg bg-[url('https://c4.wallpaperflare.com/wallpaper/718/756/55/gray-dark-gradation-blur-wallpaper-preview.jpg')]">
       {({ open }) => (
         <>
           <div className="items-center px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
@@ -43,7 +43,7 @@ export default function Navbar() {
                   <div
                     className="inline-flex items-center px-1 py-1 text-sm font-bold text-gray-900 border-2 border-orange-700 rounded-md hover:border-gray-700 hover:text-gray-300"
                     ><a
-                    href="/"
+                    href="/login"
                   >
                     Account
                   </a></div>
