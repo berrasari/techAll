@@ -48,7 +48,7 @@ function signUp({users}) {
         }
         else{
             let item = { username, password, UserType_ID }
-            item.UserType_ID=1;
+            item.UserType_ID=2;
             console.warn(item)
             
 
@@ -86,7 +86,7 @@ function signUp({users}) {
                         <div className="max-w-md mx-auto">
                             <div>
                                 <h1 className="text-2xl font-semibold">techAll Hesap Oluşturma   </h1>
-                                <h2 className='font-semibold'>OKUYUCU HESABI</h2>
+                                <h2 className='font-semibold'>YAZAR HESABI</h2>
                             </div>
                             <div className="divide-y divide-gray-200" >
                                 <div className="py-8 my-3 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
@@ -107,9 +107,9 @@ function signUp({users}) {
                                             onClick={Register}
                                             classNameName="px-2 px-3 py-1 text-white bg-orange-500 rounded rounded-md bg-opacity-80 form-control btn btn-primary submit hover:bg-gray-700" type="submit" className="px-2 py-1 text-white bg-orange-500 rounded-md " >Kayıt Ol</button>
                                     </div>
-                                    <a href="/register2
+                                    <a href="/register
                                     ">
-                                        <div  className="mt-6 text-sm text-center text-gray-600 border-b-2 border-orange-500 hover:text-orange-500">Yazar olarak kayıt olmak için tıklayınız.</div>
+                                        <div  className="mt-6 text-sm text-center text-gray-600 border-b-2 border-orange-500 hover:text-orange-500">Okuyucu olarak kayıt olmak için tıklayınız.</div>
                                     </a>
                                     
                                     <a href="/login">

@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['cdn.webrazzi.com'],
+    domains: ['cdn.webrazzi.com', 'shiftdelete.net','i.hbrcdn.com'],
   },
 
 }

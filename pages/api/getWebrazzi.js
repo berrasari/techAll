@@ -68,6 +68,7 @@ const getWebrazzi = async (req, res) => {
             let href = $(elem).attr("href")
             if (href.charAt(0) === "/") href = "https://webrazzi.com/haberler/" + href
             result[i].url = href
+            result[i].yazar= 'Webrazzi';
         })
         $(imageSelector).each((i, elem) => {
   result[i].image = $(elem).attr("src")
