@@ -6,7 +6,7 @@ import { useRouter } from 'next/router';
 
 export const getStaticProps = async () => {
     const request = await fetch(
-        `http://localhost:2000/api/users/login`
+        `http://localhost:2000/api/users/`
     );
     const users = await request.json();
     
@@ -31,20 +31,25 @@ const Login = ({users}) => {
         // Get the username and password values from the form
         const username = event.currentTarget.username.value;
         const password = event.currentTarget.password.value;
+        
 
 // Convert the users variable to an array
     const usersArray = Array.from(users.data);
 
-        const hasMatch = usersArray.some(
-            (user) => user.username === username && user.password === password
+        
+
+        const user = usersArray.find(
+            (user) => user.username === username && user.password === password 
+            
+            
         );
 
         
         // If a user was found, set a cookie and redirect to the dashboard
-        if (hasMatch) {
+        if (user) {
             
 
-            router.push('/');
+            router.push("/account/" + user.username);
         } else {
             // If no user was found, show an error
             setError('Invalid username or password');

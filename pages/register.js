@@ -2,6 +2,8 @@ import Head from "next/head";
 import React, { useState } from "react";
 import { useRouter } from 'next/router';
 
+var importedFile = require('./login');
+console.log(importedFile.myVariable); // Outputs "Hello world!"
 
 
 
@@ -105,7 +107,7 @@ function signUp({users}) {
                                     <div className="relative">
                                         <button 
                                             onClick={Register}
-                                            classNameName="px-2 px-3 py-1 text-white bg-orange-500 rounded rounded-md bg-opacity-80 form-control btn btn-primary submit hover:bg-gray-700" type="submit" className="px-2 py-1 text-white bg-orange-500 rounded-md " >Kayıt Ol</button>
+                                            className="px-2 px-3 py-1 text-white bg-orange-500 rounded rounded-md bg-opacity-80 form-control btn btn-primary submit hover:bg-gray-700" type="submit" className="px-2 py-1 text-white bg-orange-500 rounded-md " >Kayıt Ol</button>
                                     </div>
                                     <a href="/register2
                                     ">
