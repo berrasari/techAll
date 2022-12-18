@@ -1,42 +1,30 @@
 
-
 import React, { useState,useEffect } from "react";
 import { useRouter } from 'next/router'; 
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
+  
 
-export const getStaticProps=async()=>{
+export const getServerSideProps=async()=>{
     const request=await fetch('http://localhost:2000/api/Contents');
    
     const content=await request.json();
 
+
     return{
         props:{
             content,
+     
         },
     };
 }
 
-function MenuPage(props) {
-  const { menuItems } = props
 
-  return (
-    <ul>
-      {menuItems.map(item => (
-        <li key={item.id}>{item.name}</li>
-      ))}
-    </ul>
-  )
-}
 
-MenuPage.getInitialProps = async () => {
-  const { data } = await fetch('http://localhost:2000/api/Categories')
-  const categories=await {data}.json();
-
-    return{
-        props:{
-            categories,
-        },
-    };
-}
 
 
 
@@ -50,7 +38,7 @@ function Validate({content}){
     const[Content,setContent]=useState("");
     const[Category,setCategory]=useState("");
     const contentArray = Array.from(content.data);
-
+    const [isLoading, setIsLoading] = useState(false);
     const hasMatch = contentArray.some(
         (Content) => Content.title === title
     );
@@ -92,11 +80,11 @@ function Validate({content}){
 
     return(
            <div>
-              <form class=" min-h-screen py-20">
+              <div class=" min-h-screen py-20">
               <div class="container mx-auto my-2">
                 <div class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
                    <div class="w-full lg:w-1/2 flex flex-col items-center justify-center bg-gradient-to-l bg-orange-400 py-16 px-12" >
-                       <form action="#">
+                       <div action="#">
                         <div >
                             <label htmlFor="Title" class="text-gray">Başlık</label>
                             <input value={title} onChange={(e) => setTitle(e.target.value)}type="text" placeholder="Başlık" class="border border-gray-400 py-1 px-2 w-full "/>
@@ -107,11 +95,65 @@ function Validate({content}){
                             <label htmlFor="Content" class="text-gray">İçerik</label>
                             <textarea value={Content} onChange={(e) => setContent(e.target.value)} placeholder="İçerik bilgisi." rows={10} class=" resize-y border border-gray-400 py-1 px-2 w-full" />
                         </div>
-                       </form>
+                       </div>
                    </div>
                    <div class="w-full lg:w-1/2 py-16 px-12">
-                       <label htmlFor="Categories">Kategori</label>
-                       {MenuPage}
+                   <Menu as="div" className="relative inline-block text-left">
+      <div>
+        <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+          Kategoriler
+          <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+        </Menu.Button>
+      </div>
+
+      <Transition
+        as={Fragment}
+        enter="transition ease-out duration-100"
+        enterFrom="transform opacity-0 scale-95"
+        enterTo="transform opacity-100 scale-100"
+        leave="transition ease-in duration-75"
+        leaveFrom="transform opacity-100 scale-100"
+        leaveTo="transform opacity-0 scale-95"
+      >
+        <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+          <div className="py-1">
+          
+          
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                   value={Category} onClick={setCategory(1)}
+                    
+                    className={classNames(
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full px-4 py-2 text-left text-sm'
+                    )}
+                  >
+                    Bilgisayar
+                  </button>
+                )}
+              </Menu.Item>
+           
+              <Menu.Item>
+                {({ active }) => (
+                  <button
+                   value={Category} onClick={setCategory(2)}
+                    
+                    className={classNames(
+                      active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                      'block w-full px-4 py-2 text-left text-sm'
+                    )}
+                  >
+                    Elektronik
+                  </button>
+                )}
+              </Menu.Item>
+            
+          </div>
+        </Menu.Items>
+      </Transition>
+    </Menu>
+                      
                        <div >
                         <button  onClick={Register} class=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray"> Kaydet</button>
                        </div>
@@ -119,7 +161,7 @@ function Validate({content}){
                 </div>
                
                 </div> 
-              </form>
+              </div>
            </div>
            
     );
