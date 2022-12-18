@@ -1,6 +1,5 @@
 
-
-const URL = `http://localhost:2000/`;
+const URL = 'http://localhost:2000/';
 
 
 
@@ -9,14 +8,14 @@ const Content = ({ post }) => {
 
 
     return (
-        <><div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 ">
+        <><div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
-            <div className=" ">{
-                <div key={post.data.ContentID} className="relative py-16 bg-transparent overflow-hidden">
+            <div className="">{
+                <div key={post.data.ContentID} className="relative py-16 overflow-hidden bg-transparent">
                     <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
-                        <div className="relative h-full text-lg max-w-prose mx-auto" aria-hidden="true">
+                        <div className="relative h-full mx-auto text-lg max-w-prose" aria-hidden="true">
                             <svg
-                                className="absolute top-12 left-full transform translate-x-32"
+                                className="absolute transform translate-x-32 top-12 left-full"
                                 width={404}
                                 height={384}
                                 fill="none"
@@ -37,7 +36,7 @@ const Content = ({ post }) => {
                                 <rect width={404} height={384} fill="url(#74b3fd99-0a6f-4271-bef2-e80eeafdf357)" />
                             </svg>
                             <svg
-                                className="absolute top-1/2 right-full transform -translate-y-1/2 -translate-x-32"
+                                className="absolute transform -translate-x-32 -translate-y-1/2 top-1/2 right-full"
                                 width={404}
                                 height={384}
                                 fill="none"
@@ -58,7 +57,7 @@ const Content = ({ post }) => {
                                 <rect width={404} height={384} fill="url(#f210dbf6-a58d-4871-961e-36d5016a0f49)" />
                             </svg>
                             <svg
-                                className="absolute bottom-12 left-full transform translate-x-32"
+                                className="absolute transform translate-x-32 bottom-12 left-full"
                                 width={404}
                                 height={384}
                                 fill="none"
@@ -81,18 +80,18 @@ const Content = ({ post }) => {
                         </div>
                     </div>
                     <div className="relative px-4 sm:px-6 lg:px-8">
-                        <div className="text-lg max-w-prose mx-auto">
+                        <div className="mx-auto text-lg max-w-prose">
                             <h1>
-                                <div className="block text-base text-center text-indigo-600 font-semibold tracking-wide uppercase">
-                                    Introducing
+                                <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
+                                    DETAY
                                 </div>
-                                <div className="mt-2 block text-3xl text-center leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+                                <div className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-orange-700 sm:text-4xl">
                                     {post.data.title}
                                 </div>
                             </h1>
-                            <p className="mt-8 text-xl text-gray-500 leading-8">
+                            <div className="mt-8 text-xl leading-8 text-gray-900">
                                 {post.data.Content}
-                            </p>
+                            </div>
                         </div>
 
                         <div>
@@ -110,8 +109,8 @@ const Content = ({ post }) => {
                     </div>
                 </div>
             }</div>
-        </div>
-        </>
+        </div></>
+
     )
 }
 
@@ -134,8 +133,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const ContentID = context.params.ContentID;
-    console.log(ContentID);
-    const request = await fetch(`${URL}api/Contents/content/${ContentID}`);
+    const request = await fetch(`${URL}api/Contents/${ContentID}`);
     const post = await request.json();
     if (!post) {
         return {

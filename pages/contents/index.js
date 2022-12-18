@@ -9,6 +9,7 @@ export const getServerSideProps = async () => {
         `http://localhost:2000/api/Contents/`
     );
     const posts = await request.json();
+    
     return {
         props: {
             posts,
@@ -46,7 +47,7 @@ const Home = ({ posts }) => {
                                     key={post.ContentID}
                                     className="flex flex-col bg-gray-400 bg-opacity-10  items-center overflow-hidden rounded-lg shadow-lg"
                                 >
-                                    <a href={"/contents/" + post.ContentID}>
+                                    <a href={"/contents/detay/" + post.ContentID}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
