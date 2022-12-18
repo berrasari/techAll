@@ -9,15 +9,16 @@ const Content = ({ post }) => {
 
 
     return (
-        <><div
-                                className="text-center inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900  shadow-lg "
-                            >  Hosgeldiniz. Yazar hesabına giriş yaptınız.
-                            </div>
-                            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+        <>
+        <div className="text-center inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900  shadow-lg ">  
+        Hosgeldiniz. Yazar hesabına giriş yaptınız.
+       </div>
+            <div className="min-h-screen px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
             <div className="">{
-                <div key={post.username} className="relative py-16 overflow-hidden bg-transparent">
-                    <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+                <div key={post.username} className="relative py-12 overflow-hidden bg-transparent">
+                    
+                    <div className="hidden lg:absolute lg:inset-y-0  lg:w-full">
                         <div className="relative h-full mx-auto text-lg max-w-prose" aria-hidden="true">
                             <svg
                                 className="absolute transform translate-x-32 top-12 left-full"
@@ -84,7 +85,18 @@ const Content = ({ post }) => {
                             </svg>
                         </div>
                     </div>
-                    <div className="relative px-4 sm:px-6 lg:px-8">
+                    
+                    <div class="container mx-auto my-2">
+                <div class="flex flex-col w-full bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
+                   <div class="w-full  flex flex-col items-center justify-center bg-gradient-to-l  py-16 px-12" >
+                        <div >
+                         <h1 class="text-left font-bold">PROFİL</h1>
+                         
+                        </div>
+                        
+                   </div>
+                   <div class=" relative w-full  py-8 sm:px-6 lg:px-8  bg-orange-400">
+                   
                         <div className="mx-auto text-lg max-w-prose">
                             
                             <h1>
@@ -96,14 +108,14 @@ const Content = ({ post }) => {
                             
                         </div>
 
-                        <div>
+                        <div class="grid gap-4 grid-cols-3 mt-0 mt-12 w-lg mx-18 lg:grid-cols-5 lg:max-w-none">
 
-                                <div class="flex justify-center">
-                                    <ul class="bg-white rounded-lg w-96 text-gray-900">
+                                <div class="flex items-center  justify-center">
+                                    <ul class="bg-white rounded-lg w-96 text-gray-900 text-center">
 
                                         {post.data.map((post) => (
                                             <a href={"../contents/" + post.ContentID}>
-                                                <li class="px-6 py-2 border text-bold border-gray-200 w-full rounded-t-lg hover:bg-stone-500">{post.title}</li></a>
+                                                <li class="px-6 py-2 border text-bold border-gray-200 w-full rounded-lg hover:bg-stone-400 hover:text-white">{post.title}</li></a>
                                            
                                         ))}
 
@@ -115,7 +127,12 @@ const Content = ({ post }) => {
                         </div>
 
 
-                    </div>
+                    
+                   </div>
+                </div>
+               
+                </div> 
+              
                 </div>
             }</div>
         </div></>
