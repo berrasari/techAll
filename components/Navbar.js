@@ -24,28 +24,28 @@ export default function Navbar() {
                     ><a 
                     href="/"
                   >
-                    Home
+                    Anasayfa
                   </a></div>
                   <div
                     className="inline-flex items-center px-1 pt-1 text-sm font-bold text-gray-300 border-b-2 border-transparent hover:border-orange-700 hover:text-gray-900"
                     > <a
                     href="/posts"
                   >
-                    Blog
+                    Teknoloji Aktüel
                   </a></div>
                  <div
                     className="inline-flex items-center px-1 pt-1 text-sm font-bold text-gray-300 border-b-2 border-transparent hover:border-orange-700 hover:text-gray-900"
                     ><a
                     href="/about"
                   >
-                    About Us
+                    İçerikler
                   </a></div>
                   <div
                     className="inline-flex items-center px-1 py-1 text-sm font-bold text-gray-900 border-2 border-orange-700 rounded-md hover:border-gray-700 hover:text-gray-300"
                     ><a
                     href="/login"
                   >
-                    Account
+                    Hesap
                   </a></div>
                  
                 </div>

@@ -3,19 +3,16 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 
 
-
-
-export const getStaticProps = async () => {
-    const [operationsRes, incidentsRes] = await Promise.all([
-        fetch('http://localhost:3000/api/getWebrazzi'),
-        fetch('http://localhost:3000/api/shiftdelete')
-    ]);
-   
-    const [operations, incidents] = await Promise.all([
-        operationsRes.json(),
-        incidentsRes.json()
-    ]);
-    return { props: { operations, incidents } };
+xport const getStaticProps = async () => {
+    const request = await fetch(
+        `http://localhost:1337/api/videos/`
+    );
+    const posts = await request.json();
+    return {
+        props: {
+            posts,
+        },
+    };
 }
 const Home = ({ operations, incidents }) => {
     const [render, setRender] = useState(false);
