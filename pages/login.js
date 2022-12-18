@@ -35,6 +35,7 @@ const Login = ({users}) => {
 
 // Convert the users variable to an array
     const usersArray = Array.from(users.data);
+        
 
         
 
@@ -43,14 +44,21 @@ const Login = ({users}) => {
             
             
         );
+       
 
         
         // If a user was found, set a cookie and redirect to the dashboard
-        if (user) {
-            
+        if (user && user.UserType_ID == 2  ) {
+            router.push("/admin/" + user.username);
 
-            router.push("/account/" + user.username);
-        } else {
+           
+        }
+         else if (user && user.UserType_ID == 1  ) {
+            router.push("/user/"+user.username);
+
+           
+        }
+        else {
             // If no user was found, show an error
             setError('Invalid username or password');
         }
@@ -71,19 +79,19 @@ const Login = ({users}) => {
 					<div className="py-8 my-3 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
 						<div className="relative ">
 							<input autoComplete="off"  name="username" type="username" className="w-full h-10 mb-3 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600" />
-							<label for="username" className="absolute mb-6 left-0 -top-5 text-gray-300 text-sm peer-placeholder-shown:text-base mb-3 peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Kullanıcı adı</label>
+							<label htmlFor="username" className="absolute mb-6 left-0 -top-5 text-gray-300 text-sm peer-placeholder-shown:text-base mb-3 peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Kullanıcı adı</label>
 						</div>
 						<div className="relative">
 							<input autoComplete="off"  name="password" type="password" className="w-full h-10 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600" />
-							<label for="password" className="absolute left-0 -top-5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Şifre</label>
+							<label htmlFor="password" className="absolute left-0 -top-5 text-gray-300 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Şifre</label>
                                     {isLoading && <p>Loading...</p>}                           
                                         {error && <p>{error}</p>}						
                         </div>
 						<div className="relative">
-                                    <button type="submit" class="bg-orange-300 bg-opacity-60 text-white rounded-md px-2 py-1 hover:bg-orange-600 hover:bg-opacity-80 " onClick={() => setIsLoading(true) }>Giriş</button>
+                                    <button type="submit" className="bg-orange-300 bg-opacity-60 text-white rounded-md px-2 py-1 hover:bg-orange-600 hover:bg-opacity-80 " onClick={() => setIsLoading(true) }>Giriş</button>
 						</div>
                                 <a href="/register">
-                                    <div class="mt-6 text-orange-200 text-center text-sm border-b-2 border-orange-400  hover:text-orange-500">Hesabınız yok ise kayıt olabilirsiniz.</div></a>
+                                    <div className="mt-6 text-orange-200 text-center text-sm border-b-2 border-orange-400  hover:text-orange-500">Hesabınız yok ise kayıt olabilirsiniz.</div></a>
 					</div>
 				</div>
 			</div>

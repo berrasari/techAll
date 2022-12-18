@@ -9,7 +9,11 @@ const Content = ({ post }) => {
 
 
     return (
-        <><div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+        <><div
+                                className="text-center inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900  shadow-lg "
+                            >  Hosgeldiniz. Yazar hesabına giriş yaptınız.
+                            </div>
+                            <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
             <div className="">{
                 <div key={post.username} className="relative py-16 overflow-hidden bg-transparent">
@@ -82,20 +86,30 @@ const Content = ({ post }) => {
                     </div>
                     <div className="relative px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto text-lg max-w-prose">
+                            
                             <h1>
                                 <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
-                                    Youtube
+                                    İÇERİKLERİNİZ
                                 </div>
-                                <div className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-orange-700 sm:text-4xl">
-                                    {post.username}
-                                </div>
+                                
                             </h1>
-                            <p className="mt-8 text-xl leading-8 text-gray-200">
-                                {post.username}
-                            </p>
+                            
                         </div>
 
                         <div>
+
+                                <div class="flex justify-center">
+                                    <ul class="bg-white rounded-lg w-96 text-gray-900">
+
+                                        {post.data.map((post) => (
+                                            <a href={"../contents/" + post.ContentID}>
+                                                <li class="px-6 py-2 border text-bold border-gray-200 w-full rounded-t-lg hover:bg-stone-500">{post.title}</li></a>
+                                           
+                                        ))}
+
+
+                                    </ul>
+                                </div>
                            
 
                         </div>
@@ -128,7 +142,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context) => {
     const username = context.params.username;
-    const request = await fetch(`${URL}api/users/${username}`);
+    const request = await fetch(`${URL}api/Contents/author/${username}`);
     const post = await request.json();
     if (!post) {
         return {

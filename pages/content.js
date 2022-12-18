@@ -80,24 +80,24 @@ function Validate({content}){
 
     return(
            <div>
-              <div class=" min-h-screen py-20">
-              <div class="container mx-auto my-2">
-                <div class="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
-                   <div class="w-full lg:w-1/2 flex flex-col items-center justify-center bg-gradient-to-l bg-orange-400 py-16 px-12" >
+              <div className=" min-h-screen py-20">
+              <div className="container mx-auto my-2">
+                <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
+                   <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-gradient-to-l bg-orange-400 py-16 px-12" >
                        <div action="#">
                         <div >
-                            <label htmlFor="Title" class="text-gray">Başlık</label>
-                            <input value={title} onChange={(e) => setTitle(e.target.value)}type="text" placeholder="Başlık" class="border border-gray-400 py-1 px-2 w-full "/>
-                            <label htmlFor="Url" class="text-gray">Resim url'i giriniz.</label>
-                            <input value={imageurl} onChange={(e) => setImageURL(e.target.value)}type="url" placeholder="http://" class="border border-gray-400 py-1 px-2 w-full"/>
-                            <label htmlFor="Keyword" class="text-gray">Anahtar kelimeler</label>
-                            <input value={keyword} onChange={(e) => setKeyword(e.target.value)}type="text" placeholder="örn.:bilim,teknik vs" class="border border-gray-400 py-1 px-2 w-full"/>
-                            <label htmlFor="Content" class="text-gray">İçerik</label>
-                            <textarea value={Content} onChange={(e) => setContent(e.target.value)} placeholder="İçerik bilgisi." rows={10} class=" resize-y border border-gray-400 py-1 px-2 w-full" />
+                            <label htmlFor="Title" className="text-gray">Başlık</label>
+                            <input value={title} onChange={(e) => setTitle(e.target.value)}type="text" placeholder="Başlık" className="border border-gray-400 py-1 px-2 w-full "/>
+                            <label htmlFor="Url" className="text-gray">Resim url'i giriniz.</label>
+                            <input value={imageurl} onChange={(e) => setImageURL(e.target.value)}type="url" placeholder="http://" className="border border-gray-400 py-1 px-2 w-full"/>
+                            <label htmlFor="Keyword" className="text-gray">Anahtar kelimeler</label>
+                            <input value={keyword} onChange={(e) => setKeyword(e.target.value)}type="text" placeholder="örn.:bilim,teknik vs" className="border border-gray-400 py-1 px-2 w-full"/>
+                            <label htmlFor="Content" className="text-gray">İçerik</label>
+                            <textarea value={Content} onChange={(e) => setContent(e.target.value)} placeholder="İçerik bilgisi." rows={10} className=" resize-y border border-gray-400 py-1 px-2 w-full" />
                         </div>
                        </div>
                    </div>
-                   <div class="w-full lg:w-1/2 py-16 px-12">
+                   <div className="w-full lg:w-1/2 py-16 px-12">
                    <Menu as="div" className="relative inline-block text-left">
       <div>
         <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
@@ -155,7 +155,7 @@ function Validate({content}){
     </Menu>
                       
                        <div >
-                        <button  onClick={Register} class=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray"> Kaydet</button>
+                  <button onClick={Register} className=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray"> Kaydet</button>
                        </div>
                    </div>
                 </div>

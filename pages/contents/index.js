@@ -47,7 +47,7 @@ const Home = ({ posts }) => {
                                     key={post.ContentID}
                                     className="flex flex-col bg-gray-400 bg-opacity-10  items-center overflow-hidden rounded-lg shadow-lg"
                                 >
-                                    <a href={"/contents/detay/" + post.ContentID}>
+                                    <a href={"/contents/" + post.ContentID}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
@@ -81,7 +81,7 @@ const Home = ({ posts }) => {
                                                 </div>
                                                 <div className="border-white-300" />
                                                 <div className="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700">
-                                                    {post.description}
+                                                   
                                                 </div>
                                                 <div className="border-gray-300" />
                                                 <div className="px-4 py-2 mt-2">
@@ -92,10 +92,10 @@ const Home = ({ posts }) => {
                                                                     href=""
                                                                     className="font-semibold text-gray-700 hover:underline"
                                                                 >
-                                                                    {post.author}
+                                                                    Yazar : {post.username}
                                                                 </div>
                                                                 <div className="text-xs text-gray-600">
-                                                                    {post.createdAt}
+                                                                    Anahtar Kelimeler{post.keywords}
                                                                 </div>
                                                             </div>
                                                         </div>

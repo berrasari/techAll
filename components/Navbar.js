@@ -36,7 +36,7 @@ export default function Navbar() {
                  <div
                     className="inline-flex items-center px-1 pt-1 text-sm font-bold text-gray-300 border-b-2 border-transparent hover:border-orange-700 hover:text-gray-900"
                     ><a
-                    href="/about"
+                    href="/contents"
                   >
                     İçerikler
                   </a></div>

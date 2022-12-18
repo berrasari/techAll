@@ -82,11 +82,15 @@ const Content = ({ post }) => {
                     <div className="relative px-4 sm:px-6 lg:px-8">
                         <div className="mx-auto text-lg max-w-prose">
                             <h1>
-                                <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
-                                    DETAY
+                              <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
+                                    Yazar : {post.data.username}
                                 </div>
                                 <div className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-orange-700 sm:text-4xl">
                                     {post.data.title}
+                                </div>
+                                
+                                  <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
+                                    DETAY
                                 </div>
                             </h1>
                             <div className="mt-8 text-xl leading-8 text-gray-900">
