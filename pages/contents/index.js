@@ -1,15 +1,12 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import Link from "next/link";
-import Layout from "../../components/Layout"
-import Footer from "../../components/Footer"
-import Navbar from "../../components/Navbar"
+import Image from "next/image"
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const request = await fetch(
-        `http://localhost:1337/api/videos/`
+        `http://localhost:2000/api/Contents/`
     );
     const posts = await request.json();
     return {
@@ -37,26 +34,29 @@ const Home = ({ posts }) => {
 
                         <div className="text-center transform -translate-y-24 bg-gray-800 bg-opacity-25 border-orange-500 border-radius-3 border-orange">
                             <h2 className="pt-24 text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl">
-                                Ahmet Diyapoğlu
+                                İçeriklerimiz
                             </h2>
                             <h3 className="max-w-2xl p-3 pb-24 mx-auto text-xl text-orange-700 sm:mt-4">
-                                Youtube Kanalı
+                                techAll
                             </h3>
                         </div>
                         <div className="grid w-lg gap-5  mx-18 mt-0 mt-12 transform -translate-y-44 lg:grid-cols-3 lg:max-w-none">
                             {posts.data.map((post) => (
                                 <div
-                                    key={post.id}
+                                    key={post.ContentID}
                                     className="flex flex-col bg-gray-400 bg-opacity-10  items-center overflow-hidden rounded-lg shadow-lg"
                                 >
-                                    <a href={"/videos/" + post.id}>
+                                    <a href={"/contents/" + post.ContentID}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
                                             <div className="flex flex-col items-stretch min-h-full pb-4 mb-6 bg-gray-200 bg-opacity-10  transition-all duration-150 bg-transparent rounded-lg shadow-lg hover:shadow-2xl">
                                                 <div className="md:flex-shrink-0">
-                                                    <img
-                                                        src={post.attributes.coverlink}
+                                                    <Image
+                                                        src={post.imageurl}
+                                                       width='75'
+                                                        height='25'
+
                                                         alt="Blog Cover"
                                                         className="object-fill w-full rounded-lg rounded-b-none md:h-56"
                                                     />
@@ -74,13 +74,13 @@ const Home = ({ posts }) => {
                                                 <div className="flex flex-wrap items-center flex-1 px-4 py-1 mx-auto text-center">
                                                     <div href="#" className="hover:underline">
                                                         <h2 className="text-2xl font-bold tracking-normal text-orange-700">
-                                                            {post.attributes.title}
+                                                            {post.title}
                                                         </h2>
                                                     </div>
                                                 </div>
                                                 <div className="border-white-300" />
                                                 <div className="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700">
-                                                    {post.attributes.description}
+                                                    {post.description}
                                                 </div>
                                                 <div className="border-gray-300" />
                                                 <div className="px-4 py-2 mt-2">
@@ -91,10 +91,10 @@ const Home = ({ posts }) => {
                                                                     href=""
                                                                     className="font-semibold text-gray-700 hover:underline"
                                                                 >
-                                                                    {post.attributes.author}
+                                                                    {post.author}
                                                                 </div>
                                                                 <div className="text-xs text-gray-600">
-                                                                    {post.attributes.createdAt}
+                                                                    {post.createdAt}
                                                                 </div>
                                                             </div>
                                                         </div>
