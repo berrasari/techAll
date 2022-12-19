@@ -111,9 +111,13 @@ const Content = ({ post }) => {
 
                         <div class="grid gap-4 grid-cols-3 mt-0 mt-12 w-lg mx-18 lg:grid-cols-5 lg:max-w-none">
 
-                                <div class="flex justify-center">
+                                <div class="flex justify-center"><a href="/content">
+                                        <button className=" bg-orange-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            + Yeni
+                                        </button>
+                                    </a>
                                     
-                                    <ul class="bg-white rounded-lg w-96 text-gray-900">
+                                    <ul class="translate-x-4 bg-white rounded-lg w-96 text-gray-900">
 
                                         {post.data.map((post) => (
                                             <a href={"../contents/" + post.ContentID}>
@@ -123,11 +127,7 @@ const Content = ({ post }) => {
 
 
                                     </ul>
-                                    <a href="/content">
-                                        <button className="translate-x-4 bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
-                                            + Yeni
-                                        </button>
-                                    </a>
+                                    
                                 </div>
                            
 
