@@ -1,17 +1,56 @@
 
 const URL = 'http://localhost:2000/';
 
+export const getStaticPaths = async () => {
 
 
 
-const Content = ({ post }) => {
+    const res = await fetch(`${URL}api/Contents`);
+    const posts = await res.json()
+    const paths = posts.data.map((post) => {
+        return { params: { ContentID: post.ContentID.toString(), } }
+    })
+
+    return {
+
+        paths: paths,
+        fallback: false
+    };
+}
+
+export const getStaticProps = async (context) => {
+    const ContentID = context.params.ContentID;
+    const request = await fetch(`${URL}api/Contents/${ContentID}`);
+    const post = await request.json();
+   
+    if (!post) {
+        return {
+            notFound: true,
+        }
+    }
+    return {
+        props: {
+            post, 
+        },
+    }
+}
+
+
+const Content = ({ post}) => {
+
+    
 
 
     return (
         <><div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+
+
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
             <div className="">{
-                <div key={post.data.ContentID} className="relative py-16 overflow-hidden bg-transparent">
+                
+                
+                <div key={post.data.ContentID } className="relative py-16 overflow-hidden bg-transparent">
+                    
                     <div className="hidden lg:block lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
                         <div className="relative h-full mx-auto text-lg max-w-prose" aria-hidden="true">
                             <svg
@@ -83,14 +122,17 @@ const Content = ({ post }) => {
                         <div className="mx-auto text-lg max-w-prose">
                             <h1>
                               <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
-                                    Yazar : {post.data.username}
+                                    Yazar : {post.data.username} 
                                 </div>
                                 <div className="block mt-2 text-3xl font-extrabold leading-8 tracking-tight text-center text-orange-700 sm:text-4xl">
-                                    {post.data.title}
+                                    {post.data.title} 
+                                </div>
+                                <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
+                                    {post.data.Likes}
                                 </div>
                                 
                                   <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
-                                    DETAY
+                                    DETAY  
                                 </div>
                             </h1>
                             <div className="mt-8 text-xl leading-8 text-gray-900">
@@ -108,6 +150,7 @@ const Content = ({ post }) => {
                             />
 
                         </div>
+                        <div  > </div>
 
 
                     </div>
@@ -118,36 +161,5 @@ const Content = ({ post }) => {
     )
 }
 
-export const getStaticPaths = async () => {
 
-
-
-    const res = await fetch(`${URL}api/Contents`);
-    const posts = await res.json()
-    const paths = posts.data.map((post) => {
-        return { params: { ContentID: post.ContentID.toString(), } }
-    })
-
-    return {
-
-        paths: paths,
-        fallback: false
-    };
-}
-
-export const getStaticProps = async (context) => {
-    const ContentID = context.params.ContentID;
-    const request = await fetch(`${URL}api/Contents/${ContentID}`);
-    const post = await request.json();
-    if (!post) {
-        return {
-            notFound: true,
-        }
-    }
-    return {
-        props: {
-            post,
-        },
-    }
-}
 export default Content

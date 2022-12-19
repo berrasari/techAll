@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export const getServerSideProps = async () => {
     const request = await fetch(
-        `http://localhost:3001/api/shiftdelete/`
+        `http://localhost:3000/api/shiftdelete/`
     );
     const posts = await request.json();
     return {

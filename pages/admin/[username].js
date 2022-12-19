@@ -89,9 +89,10 @@ const Content = ({ post }) => {
                             
                             <h1>
                                 <div className="block text-base font-semibold tracking-wide text-center text-gray-600 uppercase">
-                                    İÇERİKLERİNİZ
+                                        İÇERİKLERİNİZ 
                                 </div>
-                                
+                                    
+
                             </h1>
                             
                         </div>
@@ -99,6 +100,7 @@ const Content = ({ post }) => {
                         <div>
 
                                 <div class="flex justify-center">
+                                    
                                     <ul class="bg-white rounded-lg w-96 text-gray-900">
 
                                         {post.data.map((post) => (
@@ -109,6 +111,11 @@ const Content = ({ post }) => {
 
 
                                     </ul>
+                                    <a href="/content">
+                                        <button className="translate-x-4 bg-orange-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                            + Yeni
+                                        </button>
+                                    </a>
                                 </div>
                            
 

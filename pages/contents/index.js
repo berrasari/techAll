@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image"
+import { useRouter } from 'next/router';
 
 
 
@@ -22,6 +23,8 @@ const Home = ({ posts }) => {
     useEffect(() => {
         setRender(true);
     }, []);
+
+    
 
     return (
         <><div className="px-4 mx-auto bg-gray-800 bg-opacity-25 max-w-7xl sm:px-6 lg:px-8 ">
@@ -47,7 +50,7 @@ const Home = ({ posts }) => {
                                     key={post.ContentID}
                                     className="flex flex-col bg-gray-400 bg-opacity-10  items-center overflow-hidden rounded-lg shadow-lg"
                                 >
-                                    <a href={"/contents/" + post.ContentID}>
+                                    <a href={"/contents/" + post.ContentID} as={"/contents/14"}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
