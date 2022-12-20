@@ -1,4 +1,9 @@
 import Navbar from "../../components/Navbar";
+import React, { useState, useEffect } from "react";
+import { useRouter } from 'next/router';
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
 const URL = 'http://localhost:2000/';
 
@@ -156,8 +161,8 @@ const Content = ({post}) => {
                                     
                                 </div>
                                 <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
-<div><input value={Comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="Yorumlarınızı yazınız.." className="border border-gray-400 py-1 px-2 w-2/3  rounded-xl " >
-    </input><button  className=" px-2 py-1 mt-5 bg-orange-600  w-1/3 rounded-xl text-center text-gray">
+<div><input value={Comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="Yorumlarınızı yazınız.." className="w-2/3 px-2 py-1 border border-gray-400 rounded-xl " >
+    </input><button  className="w-1/3 px-2 py-1 mt-5 text-center bg-orange-600  rounded-xl text-gray">
                           Yorum Ekle
                         </button></div>
         

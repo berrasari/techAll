@@ -2,6 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import Image from "next/image"
 import { useRouter } from 'next/router';
+import Navbar from "../../components/Navbar"
 
 
 
@@ -27,7 +28,8 @@ const Home = ({ posts }) => {
     
 
     return (
-        <><div className="px-4 mx-auto bg-gray-800 bg-opacity-25 max-w-7xl sm:px-6 lg:px-8 ">
+        <> < Navbar className="fixed z-100" />
+        <div className="px-4 mx-auto bg-gray-800 bg-opacity-25 max-w-7xl sm:px-6 lg:px-8 ">
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
             <div className="">{
                 <div className="relative px-4 pt-16 pb-20 bg-gray-800 bg-opacity-25 sm:px-6 lg:pt-24 lg:pb-28 lg:px-8">
@@ -38,10 +40,10 @@ const Home = ({ posts }) => {
 
                         <div className="text-center transform -translate-y-24 bg-gray-800 bg-opacity-25 border-orange-500 border-radius-3 border-orange">
                             <h2 className="pt-24 text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl">
-                                İçeriklerimiz
+                                  techAll
                             </h2>
                             <h3 className="max-w-2xl p-3 pb-24 mx-auto text-xl text-orange-700 sm:mt-4">
-                                techAll
+                                İÇERİKLERİ
                             </h3>
                         </div>
                         <div className="grid gap-5 mt-0 mt-12 transform w-lg mx-18 -translate-y-44 lg:grid-cols-3 lg:max-w-none">

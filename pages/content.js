@@ -1,4 +1,4 @@
-
+import Navbar from "../components/Navbar"
 import React, { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import { Fragment } from 'react'
@@ -95,29 +95,30 @@ function Validate({ users }) {
 
   return (
     <div>
-      <div className=" min-h-screen py-20">
+      < Navbar className="fixed z-100" />
+      <div className="min-h-screen py-20 ">
         <div className="container mx-auto my-2">
-          <div className="flex flex-col lg:flex-row w-10/12 lg:w-8/12 bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
-            <div className="w-full lg:w-1/2 flex flex-col items-center justify-center bg-gradient-to-l bg-orange-400 py-16 px-12" >
+          <div className="flex flex-col w-10/12 mx-auto overflow-hidden shadow-lg lg:flex-row lg:w-8/12 bg-gray rounded-xl">
+            <div className="flex flex-col items-center justify-center w-full px-12 py-16 bg-orange-400 lg:w-1/2 bg-gradient-to-l" >
               <div action="#">
                 <div >
                   <label htmlFor="Title" className="text-gray">Başlık</label>
-                  <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Başlık" className="border border-gray-400 py-1 px-2 w-full " />
+                  <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" placeholder="Başlık" className="w-full px-2 py-1 border border-gray-400 " />
                   <label htmlFor="Url" className="text-gray">Resim url'i giriniz.</label>
-                  <input value={imageurl} onChange={(e) => setImageURL(e.target.value)} type="url" placeholder="http://" className="border border-gray-400 py-1 px-2 w-full" />
+                  <input value={imageurl} onChange={(e) => setImageURL(e.target.value)} type="url" placeholder="http://" className="w-full px-2 py-1 border border-gray-400" />
                   <label htmlFor="Keywords" className="text-gray">Anahtar kelimeler</label>
-                  <input value={Keywords} onChange={(e) => setKeywords(e.target.value)} type="text" placeholder="örn.:bilim,teknik vs" className="border border-gray-400 py-1 px-2 w-full" />
+                  <input value={Keywords} onChange={(e) => setKeywords(e.target.value)} type="text" placeholder="örn.:bilim,teknik vs" className="w-full px-2 py-1 border border-gray-400" />
                   <label htmlFor="Content" className="text-gray">İçerik</label>
-                  <textarea value={Content} onChange={(e) => setContent(e.target.value)} placeholder="İçerik bilgisi." rows={10} className=" resize-y border border-gray-400 py-1 px-2 w-full" />
+                  <textarea value={Content} onChange={(e) => setContent(e.target.value)} placeholder="İçerik bilgisi." rows={10} className="w-full px-2 py-1 border border-gray-400 resize-y " />
                 </div>
               </div>
             </div>
-            <div className="w-full lg:w-1/2 py-16 px-12">
+            <div className="w-full px-12 py-16 lg:w-1/2">
               <Menu as="div" className="relative inline-block text-left">
                 <div>
-                  <Menu.Button className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                  <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
                     Kategoriler
-                    <ChevronDownIcon className="-mr-1 ml-2 h-5 w-5" aria-hidden="true" />
+                    <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1" aria-hidden="true" />
                   </Menu.Button>
                 </div>
 
@@ -130,7 +131,7 @@ function Validate({ users }) {
                   leaveFrom="transform opacity-100 scale-100"
                   leaveTo="transform opacity-0 scale-95"
                 >
-                  <Menu.Items className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                     <div className="py-1">
 
 
@@ -171,14 +172,14 @@ function Validate({ users }) {
 
               <div >
                 <>
-                  <button className="btn btn-primary px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray" onClick={() => setIsOpen(true)}>
+                  <button className="w-full px-32 py-2 mt-5 text-center bg-orange-600 btn btn-primary rounded-xl text-gray" onClick={() => setIsOpen(true)}>
                     Paylaş
                   </button>
 
                   {isOpen && (
-                    <div className="modal-overlay fixed top-0 left-0 right-0 bottom-0 z-50 flex items-center justify-center">
-                      <div className="modal-content bg-white rounded shadow-lg p-6">
-                        <div ><button className="text-lg bg-orange-400 btn btn-secondary mb-4" onClick={() => setIsOpen(false)}>
+                    <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center modal-overlay">
+                      <div className="p-6 bg-white rounded shadow-lg modal-content">
+                        <div ><button className="mb-4 text-lg bg-orange-400 btn btn-secondary" onClick={() => setIsOpen(false)}>
                           Kapat
                         </button></div>
 
@@ -200,7 +201,7 @@ function Validate({ users }) {
                         />
                         {error && <p className="error">{error}</p>}
                         <div />
-                        <button onClick={Register} className=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray">
+                        <button onClick={Register} className="w-full px-32 py-2 mt-5 text-center bg-orange-600 rounded-xl text-gray">
                           Doğrula
                         </button>
 
