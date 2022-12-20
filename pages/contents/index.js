@@ -86,7 +86,7 @@ const Home = ({ posts }) => {
                                                 </div>
                                                 <div className="border-white-300" />
                                                 <div className="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700">
-                                                    {post.Likes} Beğeni  {post.Comments} Yorum
+                                                    {post.count} Beğeni  
                                                 </div>
                                                 <div className="border-gray-300" />
                                                 <div className="px-4 py-2 mt-2">
