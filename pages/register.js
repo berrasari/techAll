@@ -94,20 +94,20 @@ function signUp({users}) {
                                 <div className="py-8 my-3 space-y-4 text-base leading-6 text-gray-700 sm:text-lg sm:leading-7">
                                     <div className="relative">
                                         <input value={username} onChange={(e) => setusername(e.target.value)} name="username" type="username" className="w-full h-10 mb-6 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600" />
-                                        <label for="username" className="absolute left-0 -top-5 mb-6 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Kullanıcı adı</label>
+                                        <label htmlFor="username" className="absolute left-0 -top-5 mb-6 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Kullanıcı adı</label>
                                     </div>
                                     <div className="relative">
                                         <input id="password-field"
                                            
                                             value={password} onChange={(e) => setpassword(e.target.value)} autoComplete="off" name="password" type="password" className="w-full h-10 text-gray-900 placeholder-transparent border-b-2 border-gray-300 peer focus:outline-none focus:borer-rose-600" />
-                                        <label for="password" className="absolute left-0 -top-5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Şifre</label>
+                                        <label htmlFor="password" className="absolute left-0 -top-5 text-gray-600 text-sm peer-placeholder-shown:text-base peer-placeholder-shown:text-gray-440 peer-placeholder-shown:top-2 transition-all peer-focus:-top-3.5 peer-focus:text-gray-600 peer-focus:text-sm">Şifre</label>
                                         {isLoading && <p>Loading...</p>}
                                         {error && <p>{error}</p>}
                                     </div>
                                     <div className="relative">
                                         <button 
                                             onClick={Register}
-                                            className="px-2 px-3 py-1 text-white bg-orange-500 rounded rounded-md bg-opacity-80 form-control btn btn-primary submit hover:bg-gray-700" type="submit" className="px-2 py-1 text-white bg-orange-500 rounded-md " >Kayıt Ol</button>
+                                            className="px-2 px-3 py-1 text-white bg-orange-500 rounded rounded-md bg-opacity-80 form-control btn btn-primary submit hover:bg-gray-700" type="submit"  >Kayıt Ol</button>
                                     </div>
                                     <a href="/register2
                                     ">

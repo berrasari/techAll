@@ -45,7 +45,7 @@ export default function Navbar() {
                     ><a
                     href="/login"
                   >
-                    Çıkış Yap
+                    Giriş Yap
                   </a></div>
                  
                 </div>

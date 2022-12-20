@@ -44,17 +44,17 @@ const Home = ({ posts }) => {
                                 techAll
                             </h3>
                         </div>
-                        <div className="grid w-lg gap-5  mx-18 mt-0 mt-12 transform -translate-y-44 lg:grid-cols-3 lg:max-w-none">
+                        <div className="grid gap-5 mt-0 mt-12 transform w-lg mx-18 -translate-y-44 lg:grid-cols-3 lg:max-w-none">
                             {posts.data.map((post) => (
                                 <div
                                     key={post.ContentID}
-                                    className="flex flex-col bg-gray-400 bg-opacity-10  items-center overflow-hidden rounded-lg shadow-lg"
+                                    className="flex flex-col items-center overflow-hidden bg-gray-400 rounded-lg shadow-lg bg-opacity-10"
                                 >
                                     <a href={"/contents/" + post.ContentID} as={"/contents/14"}>
 
 
                                         <div className="w-full px-4 py-6 transition-all duration-150 ">
-                                            <div className="flex flex-col items-stretch min-h-full pb-4 mb-6 bg-gray-200 bg-opacity-10  transition-all duration-150 bg-transparent rounded-lg shadow-lg hover:shadow-2xl">
+                                            <div className="flex flex-col items-stretch min-h-full pb-4 mb-6 transition-all duration-150 bg-transparent bg-gray-200 rounded-lg shadow-lg bg-opacity-10 hover:shadow-2xl">
                                                 <div className="md:flex-shrink-0">
                                                     <Image
                                                         src={post.imageurl}
@@ -84,7 +84,7 @@ const Home = ({ posts }) => {
                                                 </div>
                                                 <div className="border-white-300" />
                                                 <div className="flex flex-row flex-wrap w-full px-4 py-2 overflow-hidden text-sm text-justify text-gray-700">
-                                                   
+                                                    {post.Likes} Beğeni  {post.Comments} Yorum
                                                 </div>
                                                 <div className="border-gray-300" />
                                                 <div className="px-4 py-2 mt-2">
@@ -93,12 +93,12 @@ const Home = ({ posts }) => {
                                                             <div className="flex flex-col mx-2">
                                                                 <div
                                                                     href=""
-                                                                    className="font-semibold text-gray-700 hover:underline"
+                                                                    className="font-semibold text-gray-800 hover:underline"
                                                                 >
                                                                     Yazar : {post.username}
                                                                 </div>
-                                                                <div className="text-xs text-gray-600">
-                                                                    Anahtar Kelimeler{post.keywords}
+                                                                <div className="text-xs text-gray-600 text-title">
+                                                                    Anahtar Kelimeler = {post.Keywords}
                                                                 </div>
                                                             </div>
                                                         </div>

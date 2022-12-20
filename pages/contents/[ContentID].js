@@ -1,4 +1,4 @@
-
+import Navbar from "../components/Navbar"
 
 const URL = 'http://localhost:2000/';
 
@@ -43,7 +43,9 @@ const Content = ({post}) => {
 
 
     return (
-        <><div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
+        <>
+            < Navbar className="fixed z-100" />
+        <div className="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
 
 
             {/* We've used 3xl here, but feel free to try other max-widths based on your needs */}
@@ -52,7 +54,7 @@ const Content = ({post}) => {
                 
                 <div key={post.data.ContentID } className="relative py-16 overflow-hidden bg-transparent">
                     
-                    <div className="hidden  lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
+                    <div className="hidden lg:absolute lg:inset-y-0 lg:h-full lg:w-full">
                         <div className="relative h-full mx-auto text-lg max-w-prose" aria-hidden="true">
                             <svg
                                 className="absolute transform translate-x-32 top-12 left-full"
@@ -119,22 +121,22 @@ const Content = ({post}) => {
                             </svg>
                         </div>
                     </div>
-                    <div className="min-h-screen shadow-lg rounded-xl  px-4 sm:px-6 w-full  lg:px-8 flex items-stretch">
-                    <div className="w-10/12  mx auto lg:w-8/12 items-center justify-center bg-gray rounded-xl  shadow-lg overflow-hidden ">
-                    <div class="w-full  flex flex-col text-base bg-gradient-to-l  py-16 px-12" >
+                    <div className="flex items-stretch w-full min-h-screen px-4 shadow-lg rounded-xl sm:px-6 lg:px-8">
+                    <div className="items-center justify-center w-10/12 overflow-hidden shadow-lg mx auto lg:w-8/12 bg-gray rounded-xl ">
+                    <div className="flex flex-col w-full px-12 py-16 text-base bg-gradient-to-l" >
                         <div >
-                         <h1 class="text-left font-bold text-orange-700 ">{post.data.title}</h1>
+                         <h1 className="font-bold text-left text-orange-700 ">{post.data.title}</h1>
                          
                         </div>
-                        <div className="  text-base font-semibold tracking-wide text-left text-gray-600 ">
+                        <div className="text-base font-semibold tracking-wide text-left text-gray-600 ">
                                 YAZAR: {post.data.username}    
                                 </div>
                         
                   </div>
                             
-                            <div className="flex flex-col justify-center items-center">
+                            <div className="flex flex-col items-center justify-center">
                             <img
-                                className=" w-10/12 my-auto lg:w-8/12 rounded-lg"
+                                className="w-10/12 my-auto rounded-lg lg:w-8/12"
                                 src={post.data.imageurl}
                                 alt=""
                                 width={1310}
@@ -148,20 +150,20 @@ const Content = ({post}) => {
                                 {post.data.Content}
                             </div>
                         </div>
-                        <div className=" w-1/6  lg:w-1/3    rounded-xl  shadow-lg overflow-hidden ">
-                        <div class="w-full h-14 flex flex-col items-center justify-center bg-orange-400 bg-gradient-to-l  py-7 px-12" >
+                        <div className="w-1/6 overflow-hidden shadow-lg lg:w-1/3 rounded-xl">
+                        <div className="flex flex-col items-center justify-center w-full px-12 bg-orange-400 h-14 bg-gradient-to-l py-7" >
                                     {post.data.Likes} Beğeni  {post.data.Comments} Yorum
                                     
                                 </div>
                         
-<div class=" relative grid grid-cols-1 gap-4 p-4 mb-8 border rounded-lg bg-white shadow-lg">
+<div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
     
-        <div class="flex flex-col w-full">
+        <div className="flex flex-col w-full">
             
-                <p class="relative text-xl whitespace-nowrap truncate overflow-hidden">user{post.data.author}</p>
+                <p className="relative overflow-hidden text-xl truncate whitespace-nowrap">user{post.data.author}</p>
             
     </div>
-    <p class="-mt-4 text-gray-500">{post.data.Comment} </p>
+    <p className="-mt-4 text-gray-500">{post.data.Comment} </p>
 
 
     </div>

@@ -1,6 +1,6 @@
 
 const URL = 'http://localhost:2000/';
-
+import Navbar from "../../components/Navbar"
 
 
 
@@ -10,7 +10,8 @@ const Content = ({ post }) => {
 
     return (
         <>
-        <div className="text-center inline-flex items-center px-12 py-2 text-sm font-bold text-gray-900  shadow-lg ">  
+            < Navbar className="fixed z-100" />
+        <div className="inline-flex items-center px-12 py-2 text-sm font-bold text-center text-gray-900 shadow-lg ">  
         Hosgeldiniz. Yazar hesabına giriş yaptınız.
        </div>
             <div className="min-h-screen px-4 mx-auto max-w-7xl sm:px-6 lg:px-8 ">
@@ -18,7 +19,7 @@ const Content = ({ post }) => {
             <div className="">{
                 <div key={post.username} className="relative py-12 overflow-hidden bg-transparent">
                     
-                    <div className="hidden lg:absolute lg:inset-y-0  lg:w-full">
+                    <div className="hidden lg:absolute lg:inset-y-0 lg:w-full">
                         <div className="relative h-full mx-auto text-lg max-w-prose" aria-hidden="true">
                             <svg
                                 className="absolute transform translate-x-32 top-12 left-full"
@@ -86,16 +87,16 @@ const Content = ({ post }) => {
                         </div>
                     </div>
                     
-                    <div class="container mx-auto my-2">
-                <div class="flex flex-col w-full bg-gray rounded-xl mx-auto shadow-lg overflow-hidden">
-                   <div class="w-full  flex flex-col items-center justify-center bg-gradient-to-l  py-16 px-12" >
+                    <div className="container mx-auto my-2">
+                <div className="flex flex-col w-full mx-auto overflow-hidden shadow-lg bg-gray rounded-xl">
+                   <div className="flex flex-col items-center justify-center w-full px-12 py-16 bg-gradient-to-l" >
                         <div >
-                         <h1 class="text-left font-bold">PROFİL</h1>
+                         <h1 className="font-bold text-left">PROFİL</h1>
                          
                         </div>
                         
                    </div>
-                   <div class=" relative w-full  py-8 sm:px-6 lg:px-8  bg-orange-400">
+                                <div className="relative w-full py-8 bg-orange-400 sm:px-6 lg:px-8">
                    
                         <div className="mx-auto text-lg max-w-prose">
                             
@@ -109,19 +110,19 @@ const Content = ({ post }) => {
                             
                         </div>
 
-                        <div class="grid gap-4 grid-cols-3 mt-0 mt-12 w-lg mx-18 lg:grid-cols-5 lg:max-w-none">
+                        <div className="grid grid-cols-3 gap-4 mt-0 mt-12 w-lg mx-18 lg:grid-cols-5 lg:max-w-none">
 
-                                <div class="flex justify-center"><a href="/content">
-                                        <button className=" bg-orange-900 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                                <div className="flex justify-center"><a href="/content">
+                                        <button className="px-4 py-2 font-bold text-white bg-orange-900 rounded-full hover:bg-blue-700">
                                             + Yeni
                                         </button>
                                     </a>
                                     
-                                    <ul class="translate-x-4 bg-white rounded-lg w-96 text-gray-900">
+                                    <ul className="text-gray-900 translate-x-4 bg-white rounded-lg w-96">
 
                                         {post.data.map((post) => (
                                             <a href={"../contents/" + post.ContentID}>
-                                                <li class="px-6 py-2 border text-bold border-gray-200 w-full rounded-lg hover:bg-stone-400 hover:text-white">{post.title}</li></a>
+                                                <li className="w-full px-6 py-2 border border-gray-200 rounded-lg text-bold hover:bg-stone-400 hover:text-white">{post.title}</li></a>
                                            
                                         ))}
 

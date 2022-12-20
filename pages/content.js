@@ -200,7 +200,7 @@ function Validate({ users }) {
                         />
                         {error && <p className="error">{error}</p>}
                         <div />
-                        <button onClick={Register} class=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray">
+                        <button onClick={Register} className=" px-32 py-2 mt-5 bg-orange-600  w-full rounded-xl text-center text-gray">
                           Doğrula
                         </button>
 

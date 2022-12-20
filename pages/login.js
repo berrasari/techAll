@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
     const request = await fetch(
         `http://localhost:2000/api/users/`
     );
@@ -68,9 +68,9 @@ const Login = ({users}) => {
         <form className="min-h-screen  bg-cover  shadow-md bg-[url('https://c4.wallpaperflare.com/wallpaper/718/756/55/gray-dark-gradation-blur-wallpaper-preview.jpg')]  flex flex-col justify-center sm:py-12"  onSubmit={handleSubmit}>
             <div className="relative py-3 -translate-y-12 sm:max-w-xl sm:mx-auto">
 		<div
-			className="absolute inset-0 transform -skew-y-6 shadow-lg bg-gradient-to-r from-orange-400 to-orange-700 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
+                    className="absolute inset-0 transform translate-y-12 -skew-y-6 shadow-lg bg-gradient-to-r from-orange-400 to-orange-700 sm:skew-y-0 sm:-rotate-6 sm:rounded-3xl">
 		</div>
-		<div className="relative px-4 py-10 shadow-lg bg-stone-800 bg-opacity-60 sm:rounded-3xl sm:p-20">
+                <div className="relative px-4 py-10 translate-y-12 shadow-lg bg-stone-800 bg-opacity-60 sm:rounded-3xl sm:p-20">
 			<div className="max-w-md mx-auto">
 				<div>
 					<h1 className="text-2xl font-semibold text-orange-200">techAll  Kullanıcı Girişi </h1>
@@ -88,10 +88,10 @@ const Login = ({users}) => {
                                         {error && <p>{error}</p>}						
                         </div>
 						<div className="relative">
-                                    <button type="submit" className="bg-orange-300 bg-opacity-60 text-white rounded-md px-2 py-1 hover:bg-orange-600 hover:bg-opacity-80 " onClick={() => setIsLoading(true) }>Giriş</button>
+                                    <button type="submit" className="px-2 py-1 text-white bg-orange-300 rounded-md bg-opacity-60 hover:bg-orange-600 hover:bg-opacity-80 " onClick={() => setIsLoading(true) }>Giriş</button>
 						</div>
                                 <a href="/register">
-                                    <div className="mt-6 text-orange-200 text-center text-sm border-b-2 border-orange-400  hover:text-orange-500">Hesabınız yok ise kayıt olabilirsiniz.</div></a>
+                                    <div className="mt-6 text-sm text-center text-orange-200 border-b-2 border-orange-400 hover:text-orange-500">Hesabınız yok ise kayıt olabilirsiniz.</div></a>
 					</div>
 				</div>
 			</div>
