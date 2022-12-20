@@ -1,4 +1,4 @@
-import Navbar from "../components/Navbar"
+import Navbar from "../../components/Navbar";
 
 const URL = 'http://localhost:2000/';
 
@@ -39,7 +39,7 @@ export const getStaticProps = async (context) => {
 
 const Content = ({post}) => {
 
-    
+   
 
 
     return (
@@ -155,17 +155,23 @@ const Content = ({post}) => {
                                     {post.data.Likes} Beğeni  {post.data.Comments} Yorum
                                     
                                 </div>
-                        
-<div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
+                                <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
+<div><input value={Comment} onChange={(e) => setComment(e.target.value)} type="text" placeholder="Yorumlarınızı yazınız.." className="border border-gray-400 py-1 px-2 w-2/3  rounded-xl " >
+    </input><button  className=" px-2 py-1 mt-5 bg-orange-600  w-1/3 rounded-xl text-center text-gray">
+                          Yorum Ekle
+                        </button></div>
+        
     
+    </div>                    
+<div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
+
         <div className="flex flex-col w-full">
             
                 <p className="relative overflow-hidden text-xl truncate whitespace-nowrap">user{post.data.author}</p>
             
     </div>
     <p className="-mt-4 text-gray-500">{post.data.Comment} </p>
-
-
+    
     </div>
 </div>
                         </div>
@@ -178,4 +184,4 @@ const Content = ({post}) => {
 }
 
 
-export default Content
+export default Content;
