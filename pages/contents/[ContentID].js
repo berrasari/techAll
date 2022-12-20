@@ -39,7 +39,7 @@ export const getStaticProps = async (context) => {
 
 const Content = ({post}) => {
 
-   
+   const [Comment, setComment] = useState("");
 
 
     return (
