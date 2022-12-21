@@ -38,6 +38,11 @@ export const getStaticProps = async (context) => {
     );
     const comments = await req2.json();
 
+    const req3 = await fetch(
+        `${URL}api/Comment/${ContentID}`
+    );
+    const likes = await req3.json();
+
 
     if (!post) {
         return {
@@ -46,18 +51,19 @@ export const getStaticProps = async (context) => {
     }
     return {
         props: {
-            post, users, comments
+            post, users, comments, likes
         },
     }
 }
 
 
-const Content = ({ post, users, comments }) => {
-    const data =comments.data;
+const Content = ({ post, users, comments, likes }) => {
+    const data = comments.data;
     console.log(data);
 
     const [Comment, setComment] = useState("");
     const [isOpen, setIsOpen] = useState(false);
+    const [isOpen2, setIsOpen2] = useState(false);
     const router = useRouter();
     const [userid, setuserid] = useState("");
     const [ContentID, setContentID] = useState("");
@@ -73,6 +79,56 @@ const Content = ({ post, users, comments }) => {
     const user = usersArray.find(
         (user) => user.username === username && user.password === password
     );
+
+    const likesArray = Array.from(likes.data);
+
+
+    const like = likesArray.find(
+        (like) => like.username === username
+    );
+
+    async function Like() {
+        if (user && !like) {
+            let item = { ContentID, userid }
+            item.userid = user.userid;
+
+            item.ContentID = post.data.ContentID;
+
+
+            console.warn(item)
+
+
+            let result = await fetch("http://localhost:2000/api/Likes", {
+                method: 'POST',
+                body: JSON.stringify(item),
+                headers: {
+                    "Access-Control-Allow-Origin": "no-cors",
+                    "Content-Type": 'application/json',
+                    "Accept": "application/json"
+                }
+
+            })
+
+            setIsLoading(true);
+            result = await result.json();
+
+
+
+        }
+
+        else {
+            // If no user was found, show an error
+            setError('Daha önce beğendiniz');
+            router.push("/contents/" + post.data.ContentID);
+        }
+
+        setIsOpen2(false);
+        router.push("/contents/" + post.data.ContentID);
+
+    }
+
+
+
 
     async function Register() {
 
@@ -108,6 +164,7 @@ const Content = ({ post, users, comments }) => {
             // If no user was found, show an error
             setError('Yetkiniz yok');
         }
+        router.push("/contents/" + post.data.ContentID);
 
 
 
@@ -225,7 +282,9 @@ const Content = ({ post, users, comments }) => {
                             </div>
                             <div className="w-1/6 overflow-hidden shadow-lg lg:w-1/3 rounded-xl">
                                 <div className="flex flex-col items-center justify-center w-full px-12 bg-orange-400 h-14 bg-gradient-to-l py-7" >
-                                    {post.data.count} Beğeni 
+                                    <button className="px-8 py-1 font-bold text-white bg-orange-900 rounded-full hover:bg-blue-700" onClick={() => setIsOpen2(true)}>
+                                        Beğen
+                                    </button> {post.data.count} Beğeni
 
                                 </div>
                                 <div className="relative grid grid-cols-1 gap-4 p-4 mb-8 bg-white border rounded-lg shadow-lg ">
@@ -260,6 +319,39 @@ const Content = ({ post, users, comments }) => {
                                                     {error && <p className="error">{error}</p>}
                                                     <div />
                                                     <button onClick={Register} className="w-full px-32 py-2 mt-5 text-center bg-orange-600 rounded-xl text-gray">
+                                                        Doğrula
+                                                    </button>
+
+                                                </div>
+                                            </div>
+                                        )}
+
+                                        {isOpen2 && (
+                                            <div className="fixed top-0 bottom-0 left-0 right-0 z-50 flex items-center justify-center modal-overlay">
+                                                <div className="p-6 bg-white rounded shadow-lg modal-content">
+                                                    <div ><button className="mb-4 text-lg bg-orange-400 btn btn-secondary" onClick={() => setIsOpen2(false)}>
+                                                        Kapat
+                                                    </button></div>
+
+
+                                                    <label htmlFor="username">Kullanıcı adı : </label>
+                                                    <input
+                                                        type="text"
+                                                        id="username"
+                                                        value={username}
+                                                        onChange={(e) => setUsername(e.target.value)}
+                                                    />
+                                                    <div />
+                                                    <label htmlFor="password">Şifre : </label>
+                                                    <input
+                                                        type="password"
+                                                        id="password"
+                                                        value={password}
+                                                        onChange={(e) => setPassword(e.target.value)}
+                                                    />
+                                                    {error && <p className="error">{error}</p>}
+                                                    <div />
+                                                    <button onClick={Like} className="w-full px-32 py-2 mt-5 text-center bg-orange-600 rounded-xl text-gray">
                                                         Doğrula
                                                     </button>
 
