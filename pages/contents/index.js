@@ -4,27 +4,43 @@ import Image from "next/image"
 import { useRouter } from 'next/router';
 import Navbar from "../../components/Navbar"
 
+import { Fragment } from 'react'
+import { Menu, Transition } from '@headlessui/react'
+import { ChevronDownIcon } from '@heroicons/react/20/solid'
 
-
+function classNames(...classes) {
+    return classes.filter(Boolean).join(' ')
+  }
 export const getServerSideProps = async () => {
     const request = await fetch(
         `http://localhost:2000/api/Contents/`
     );
     const posts = await request.json();
-    
+    const request2 = await fetch(
+        `http://localhost:2000/api/Categories/`
+    );
+    const categories = await request2.json();
+    const request3= await fetch(
+        `http://localhost:2000/api/Categories/`
+    );
+    const author = await request3.json();
     return {
         props: {
             posts,
+            categories,
+            author,
         },
     };
 }
-const Home = ({ posts }) => {
+const Home = ({ posts ,categories,author}) => {
     const [render, setRender] = useState(false);
 
+    const [CategoryID, setCategoryID] = useState("");
     useEffect(() => {
         setRender(true);
     }, []);
-
+   
+   
     
 
     return (
@@ -39,13 +55,60 @@ const Home = ({ posts }) => {
                     <div className="relative mx-auto max-w-7xl">
 
                         <div className="text-center transform -translate-y-24 bg-gray-800 bg-opacity-25 border-orange-500 border-radius-3 border-orange">
+                           
+                        <Menu as="div" className="relative inline-block text-left">
+                <div>
+                  <Menu.Button className="inline-flex justify-center w-full px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-md shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+                    Kategoriler
+                    <ChevronDownIcon className="w-5 h-5 ml-2 -mr-1" aria-hidden="true" />
+                  </Menu.Button>
+                </div>
+
+                <Transition
+                  as={Fragment}
+                  enter="transition ease-out duration-100"
+                  enterFrom="transform opacity-0 scale-95"
+                  enterTo="transform opacity-100 scale-100"
+                  leave="transition ease-in duration-75"
+                  leaveFrom="transform opacity-100 scale-100"
+                  leaveTo="transform opacity-0 scale-95"
+                >
+                  <Menu.Items className="absolute right-0 z-10 w-56 mt-2 origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                    <div className="py-1">
+                    {categories.data.map((post) => (
+                                            <a href={"../contents/" + post.CategoryID}>
+                    
+                      <Menu.Item>
+                        {({ active }) => (
+                            
+                          <button  href="#" 
+                            className={classNames(
+                              active ? 'bg-gray-100 text-gray-900' : 'text-gray-700',
+                              'block w-full px-4 py-2 text-left text-sm'
+                            )}
+                          >
+                           
+                             <li className="w-full px-6 py-2 border border-gray-200 rounded-lg text-bold hover:bg-stone-400 hover:text-white">{post.CategoryName}</li>
+                                           
+                                       
+                          </button>
+                        )}
+                      </Menu.Item>
+                      </a> ))}
+                    </div>
+                  </Menu.Items>
+                </Transition>
+              </Menu>
                             <h2 className="pt-24 text-3xl font-extrabold tracking-tight text-gray-100 sm:text-4xl">
                                   techAll
                             </h2>
                             <h3 className="max-w-2xl p-3 pb-24 mx-auto text-xl text-orange-700 sm:mt-4">
-                                İÇERİKLERİ
-                            </h3>
+                                İÇERİKLERİ 
+                              
+                       </h3>    
+                            
                         </div>
+                       
                         <div className="grid gap-5 mt-0 mt-12 transform w-lg mx-18 -translate-y-44 lg:grid-cols-3 lg:max-w-none">
                             {posts.data.map((post) => (
                                 <div
