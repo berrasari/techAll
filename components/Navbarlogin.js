@@ -15,7 +15,7 @@ export default function Navbar() {
             <div className="flex items-center justify-center h-16">
               <div className="flex items-center justify-center">
                 <div className="flex items-center flex-shrink-0">
-                <a href="/">
+                <a href="/index2">
                    </a>
                 </div>
                 <div className="hidden px-5 sm:flex sm:space-x-8" >

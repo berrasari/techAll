@@ -110,7 +110,7 @@ const Content = ({ post }) => {
                             
                         </div>
 
-                        <div className="grid grid-cols-3 gap-4 mt-0 mt-12 w-lg mx-18 lg:grid-cols-5 lg:max-w-none">
+                        <div className="grid grid-cols-2 gap-2 ">
 
                                 <div className="flex justify-center"><a href="/content">
                                         <button className="px-4 py-2 font-bold text-white bg-orange-900 rounded-full hover:bg-blue-700">
@@ -118,7 +118,7 @@ const Content = ({ post }) => {
                                         </button>
                                     </a>
                                     
-                                    <ul className="text-gray-900 translate-x-4 bg-white rounded-lg w-96">
+                                    <ul className="text-gray-900 translate-x-4 bg-white rounded-lg ">
 
                                         {post.data.map((post) => (
                                             <a href={"../contents/" + post.ContentID}>
@@ -128,6 +128,9 @@ const Content = ({ post }) => {
 
 
                                     </ul>
+
+
+
                                     
                                 </div>
                            
